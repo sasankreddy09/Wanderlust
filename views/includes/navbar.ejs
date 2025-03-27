@@ -1,0 +1,92 @@
+<style>
+  .search-btn{
+    background-color: red;
+    color: white;
+    border-radius: 3rem;
+  }
+
+  .search-btn:hover{
+    background-color: red;
+    color: white;
+  }
+  .searchBox{
+    margin-left: auto;
+  }
+  .search-btn i {
+    display: inline;
+  }
+  .search{
+    border-radius: 3rem;
+    padding: 0.3rem 3rem 0.3rem 3rem;
+    margin: 0rem 3rem 0rem 3rem;
+  }
+  .navbars{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .navs{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+  }
+  .navbars{
+    display: none;
+  }
+  @media only screen and (max-width:800px) {
+    .navbars{
+      display: flex;
+    }
+    .naver{
+      display: none;
+    }
+  }
+</style>
+<body>
+  <div class="naver">
+  <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" id="navbar-brand" href="/listing"><i class="fa-solid fa-compass"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/listing">Explore</a>
+          </div>
+          <div class="searchBox">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2 search" type="search" placeholder="Search listing" aria-label="Search">
+              <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+            </form>
+          </div>
+          <div class="navbar-nav " style="margin-left: auto;">
+            <a class="nav-link" href="/listing/new">Add new Listings</a>
+            <% if(!currUser){%>
+            <a class=" btn btn-light " href="/login">login</a>
+            <a class=" btn btn-light" href="/signup">sign up</a>
+            <%}%>
+            <% if(currUser){ %>
+            <a class=" btn btn-light" href="/logOut">logout</a>
+            <%}%>
+          </div>
+        </div>
+      </div>
+  </nav>
+</div>
+  <div class="navbars">
+    <div class="navbar-nav">
+      <a class="nav-link" href="/listing">Explore</a>
+    </div>
+    <div class="navbar-nav navs" >
+     <div> <a class="nav-link" href="/listing/new">Add new Listings</a></div>
+      <div><% if(!currUser){%>
+      <a class=" btn btn-light " href="/login">login</a>
+      <a class=" btn btn-light" href="/signup">sign up</a>
+      <%}%>
+      <% if(currUser){ %>
+      <a class=" btn btn-light" href="/logOut">logout</a>
+      <%}%>
+    </div>
+    </div>
+  </div>
+</body>

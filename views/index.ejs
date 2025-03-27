@@ -1,0 +1,144 @@
+<%- layout("./layouts/boilerplate.ejs") %>
+<style>
+  #filter{
+    align-items: center;
+    display: none;
+  }
+  #filters{
+    display: flex;
+    align-items: center;
+  }
+
+  .filter{
+    margin: 1rem;
+    opacity: 0.7;
+  }
+  .icons{
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  .form{
+    border: 1px solid wheat;
+    border-radius:0.7rem;
+    padding:0.6rem;
+    margin-left: 2rem;
+    display: flex;
+  }
+  .forms{
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    display: flex;
+    align-items: center;
+    padding: 0.4rem;
+  }
+  .toggle{
+    display: none;
+  }
+  @media only screen and (max-width:800px) {
+    #filters{
+      display: none;
+    }
+    #filter{
+      display: flex;
+    }
+  }
+</style>
+<body>
+  <!-- <h1>All Listings</h1> -->
+  <div id="filter">
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-fire"></i></div>
+     <div> Trending </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-bed"></i></div>
+     <div> Rooms </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-mountain-city"></i></div>
+     <div> Iconic Cities </div>
+    </div>
+    <div class="forms">
+      <div class="form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Show taxes</label>
+      </div>
+      </div>
+  </div>
+  <div id="filters">
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-fire"></i></div>
+     <div> Trending </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-bed"></i></div>
+     <div> Rooms </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-mountain-city"></i></div>
+     <div> Iconic Cities </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-mountain"></i></div>
+     <div> Mountains </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-person-swimming"></i></div>
+     <div> Amazing Pools </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-cow"></i></div>
+     <div> Farms </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-snowflake"></i></div>
+     <div> Arctic </div>
+    </div>
+    <div class="filter">
+      <div class="icons"><i class="fa-solid fa-campground"></i></div>
+     <div> Camping </div>
+    </div>
+  <div class="form">
+    <div class="form-check-reverse form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Show taxes</label>
+    </div>
+  </div>
+  </div>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+    <% for (let arrs of arr){ %>
+        <div class="card col cards">
+            <a href="/listing/<%=arrs.id%>">
+            <img src="<%=arrs.image.url%>"  style="height: 20rem;" class="card-img-top" alt="Nothing">
+            <div class="card-img-overlay">new image
+            </div>
+            <div class="card-body">
+              <p class="card-text">            
+               <b> <%= arrs.title%></b><br>
+               &#x20B9;<%= arrs.price.toLocaleString();%>night <span class="toggle">&nbsp;&nbsp;+8%GST</span>
+                <br></p>
+            </div>
+        </a>
+          </div>
+          <%}%>
+        </div>
+</body>
+<script>
+  let toogle=document.querySelectorAll(".toggle");
+  let toogleBar=document.querySelector(".form-check-input");
+  toogleBar.addEventListener("click",()=>{
+    for(toogles of toogle){
+      if(!toogles.style.display || toogles.style.display=="none"){
+        toogles.style.display="inline";
+      }
+      else{
+        toogles.style.display="none";
+      }
+    }
+  })
+</script>
